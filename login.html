@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>utileria.js · Iniciar sesión</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <main class="pagina pagina--centrada">
+    <section class="panel" aria-labelledby="titulo-login">
+      <p class="marca">utileria.js v1.0.0</p>
+      <h2 id="titulo-login">Iniciar sesión</h2>
+      <p id="saludo">Escribe tu correo y una contraseña segura.</p>
+
+      <form id="formLogin" novalidate>
+        <div class="campo" data-campo="correo">
+          <label for="correo">Correo electrónico <code>validarCorreo</code></label>
+          <input type="email" id="correo" name="correo" autocomplete="email" placeholder="nombre@ejemplo.com">
+          <p class="mensaje" id="msg-correo"></p>
+        </div>
+
+        <div class="campo" data-campo="password">
+          <label for="password">Contraseña <code>validarPassword + validarPasswordPersonal</code></label>
+          <div class="con-boton">
+            <input type="password" id="password" name="password" autocomplete="current-password" aria-describedby="requisitos">
+            <button type="button" class="boton-ver" id="btnVer" aria-pressed="false">Mostrar</button>
+          </div>
+          <ul class="requisitos" id="requisitos" aria-live="polite">
+            <li data-req="longitud">8 caracteres o más</li>
+            <li data-req="mayuscula">Una mayúscula</li>
+            <li data-req="minuscula">Una minúscula</li>
+            <li data-req="numero">Un número</li>
+            <li data-req="especial">Un carácter especial</li>
+            <li data-req="personal">Sin tu nombre, correo ni fecha de nacimiento</li>
+          </ul>
+          <p class="mensaje" id="msg-password"></p>
+        </div>
+
+        <div class="acciones">
+          <button type="submit" class="boton boton--principal">Iniciar sesión</button>
+        </div>
+        <p class="aviso" id="resultado" role="status" hidden></p>
+      </form>
+
+      <p class="nota-boton"><a class="enlace" href="index.html">Volver al registro</a></p>
+    </section>
+  </main>
+
+  <script src="js/utileria.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>utileria.js · Registro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <main class="pagina">
+
+    <!-- Columna izquierda: presentación y tablero en vivo -->
+    <section class="intro" aria-labelledby="titulo">
+      <p class="marca">utileria.js v1.0.0</p>
+      <h1 id="titulo">Valida formularios sin escribir expresiones regulares.</h1>
+      <p>Llena el registro y observa qué función de la librería revisa cada dato. El resultado se actualiza mientras escribes.</p>
+
+      <ul class="tablero" aria-live="polite">
+        <li id="t-soloLetras"><span>soloLetras()</span><span class="resultado">—</span></li>
+        <li id="t-validarCorreo"><span>validarCorreo()</span><span class="resultado">—</span></li>
+        <li id="t-validarLongitud"><span>validarLongitud()</span><span class="resultado">—</span></li>
+        <li id="t-calcularEdad"><span>calcularEdad()</span><span class="resultado">—</span></li>
+        <li id="t-esMayorDeEdad"><span>esMayorDeEdad()</span><span class="resultado">—</span></li>
+        <li id="t-capitalizarNombre"><span>capitalizarNombre()</span><span class="resultado">—</span></li>
+      </ul>
+    </section>
+
+    <!-- Columna derecha: formulario -->
+    <section class="panel" aria-labelledby="titulo-form">
+      <h2 id="titulo-form">Registro</h2>
+      <p>Calcula tu edad para continuar al inicio de sesión. Solo pueden pasar personas de 18 años o más.</p>
+
+      <form id="formRegistro" novalidate>
+        <div class="fila">
+          <div class="campo" data-campo="nombre">
+            <label for="nombre">Nombre <code>soloLetras</code></label>
+            <input type="text" id="nombre" name="nombre" autocomplete="given-name">
+            <p class="mensaje" id="msg-nombre"></p>
+          </div>
+
+          <div class="campo" data-campo="apellidos">
+            <label for="apellidos">Apellidos <code>soloLetras</code></label>
+            <input type="text" id="apellidos" name="apellidos" autocomplete="family-name">
+            <p class="mensaje" id="msg-apellidos"></p>
+          </div>
+        </div>
+
+        <div class="campo" data-campo="correo">
+          <label for="correo">Correo electrónico <code>validarCorreo</code></label>
+          <input type="email" id="correo" name="correo" autocomplete="email" placeholder="nombre@ejemplo.com">
+          <p class="mensaje" id="msg-correo"></p>
+        </div>
+
+        <div class="fila">
+          <div class="campo" data-campo="telefono">
+            <label for="telefono">Teléfono <code>validarLongitud</code></label>
+            <input type="tel" id="telefono" name="telefono" inputmode="numeric" maxlength="10" autocomplete="tel" placeholder="10 dígitos">
+            <p class="mensaje" id="msg-telefono"></p>
+          </div>
+
+          <div class="campo" data-campo="fecha">
+            <label for="fecha">Fecha de nacimiento <code>calcularEdad</code></label>
+            <input type="date" id="fecha" name="fecha">
+            <p class="mensaje" id="msg-fecha"></p>
+          </div>
+        </div>
+
+        <div class="acciones">
+          <button type="button" class="boton boton--principal" id="btnCalcular">Calcular edad</button>
+          <button type="button" class="boton boton--secundario" id="btnLogin" disabled>Ir al login</button>
+        </div>
+        <p class="nota-boton" id="notaLogin">Calcula tu edad para habilitar el acceso al login.</p>
+        <p class="aviso aviso--error" id="avisoForm" role="alert" hidden></p>
+      </form>
+    </section>
+
+    <footer class="pie">
+      Hecho con <a class="enlace" href="https://github.com/USUARIO/Actividad2">utileria.js</a>
+    </footer>
+  </main>
+
+  <!-- Ventana modal con la edad calculada -->
+  <dialog class="modal" id="modalEdad" aria-labelledby="modalTitulo">
+    <div class="modal__cuerpo">
+      <h3 id="modalTitulo">Tu edad</h3>
+      <p class="modal__edad" id="modalEdadNumero">0</p>
+      <p class="modal__unidad">años cumplidos</p>
+      <p class="modal__veredicto" id="modalVeredicto"></p>
+      <p class="modal__codigo" id="modalCodigo"></p>
+      <button type="button" class="boton boton--principal" id="btnCerrarModal">Entendido</button>
+    </div>
+  </dialog>
+
+  <script src="js/utileria.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>

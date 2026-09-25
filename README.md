@@ -228,7 +228,7 @@ Al abrir `index.html`, la consola del navegador (F12 → Consola) muestra una ta
 ### Login
 
 ![Login con validación de contraseña](img/loginUno.png)
-![Login con validación de contraseña](img/loginDos.png.png)
+![Login con validación de contraseña](img/loginDos.png)
 
 
 ---
